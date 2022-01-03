@@ -12,7 +12,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.mozilla.fenix.helpers.AndroidAssetDispatcher
 import org.mozilla.fenix.helpers.HomeActivityIntentTestRule
-import org.mozilla.fenix.ui.robots.browserScreen
 import org.mozilla.fenix.ui.robots.navigationToolbar
 
 /**
@@ -64,7 +63,7 @@ class SitePermissionsTest {
         }.clickStartMicrophoneButton {
             verifyMicrophonePermissionPrompt(testPageSubstring)
         }.clickPagePermissionButton(true) {
-            verifyPageContent("Success!")
+            verifyMessageDisplayed("Success!")
         }
     }
 
@@ -92,7 +91,7 @@ class SitePermissionsTest {
         }.clickStartCameraButton {
             verifyCameraPermissionPrompt(testPageSubstring)
         }.clickPagePermissionButton(true) {
-            verifyPageContent("Success!")
+            verifyMessageDisplayed("Success!")
         }
     }
 
@@ -103,8 +102,6 @@ class SitePermissionsTest {
 
         navigationToolbar {
         }.enterURLAndEnterToBrowser(testPage.toUri()) {
-        }.clickStartCameraAndMicrophoneButton { }
-        browserScreen {
         }.clickStartCameraAndMicrophoneButton {
             verifyCameraAndMicPermissionPrompt(testPageSubstring)
         }.clickPagePermissionButton(false) {
