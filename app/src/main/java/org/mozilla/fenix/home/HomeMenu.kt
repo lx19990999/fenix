@@ -116,67 +116,67 @@ class HomeMenu(
         val experiments = context.components.analytics.experiments
         val settings = context.components.settings
 
-        val bookmarksItem = BrowserMenuImageText(
-            context.getString(R.string.library_bookmarks),
-            R.drawable.ic_bookmark_list,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.Bookmarks)
-        }
-
-        val historyItem = BrowserMenuImageText(
-            context.getString(R.string.library_history),
-            R.drawable.ic_history,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.History)
-        }
-
-        val downloadsItem = BrowserMenuImageText(
-            context.getString(R.string.library_downloads),
-            R.drawable.ic_download,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.Downloads)
-        }
-
-        val extensionsItem = BrowserMenuImageText(
-            context.getString(R.string.browser_menu_add_ons),
-            R.drawable.ic_addons_extensions,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.Extensions)
-        }
-
-        val whatsNewItem = BrowserMenuHighlightableItem(
-            context.getString(R.string.browser_menu_whats_new),
-            R.drawable.ic_whats_new,
-            iconTintColorResource = primaryTextColor,
-            highlight = BrowserMenuHighlight.LowPriority(
-                notificationTint = getColor(context, R.color.fx_mobile_icon_color_information)
-            ),
-            isHighlighted = { WhatsNew.shouldHighlightWhatsNew(context) }
-        ) {
-            onItemTapped.invoke(Item.WhatsNew)
-        }
-
-        val helpItem = BrowserMenuImageText(
-            context.getString(R.string.browser_menu_help),
-            R.drawable.mozac_ic_help,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.Help)
-        }
-
-        val customizeHomeItem = BrowserMenuImageText(
-            context.getString(R.string.browser_menu_customize_home),
-            R.drawable.ic_customize,
-            primaryTextColor
-        ) {
-            onItemTapped.invoke(Item.CustomizeHome)
-        }
-
-        // Use nimbus to set the icon and title.
+//        val bookmarksItem = BrowserMenuImageText(
+//            context.getString(R.string.library_bookmarks),
+//            R.drawable.ic_bookmark_list,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.Bookmarks)
+//        }
+//
+//        val historyItem = BrowserMenuImageText(
+//            context.getString(R.string.library_history),
+//            R.drawable.ic_history,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.History)
+//        }
+//
+//        val downloadsItem = BrowserMenuImageText(
+//            context.getString(R.string.library_downloads),
+//            R.drawable.ic_download,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.Downloads)
+//        }
+//
+//        val extensionsItem = BrowserMenuImageText(
+//            context.getString(R.string.browser_menu_add_ons),
+//            R.drawable.ic_addons_extensions,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.Extensions)
+//        }
+//
+//        val whatsNewItem = BrowserMenuHighlightableItem(
+//            context.getString(R.string.browser_menu_whats_new),
+//            R.drawable.ic_whats_new,
+//            iconTintColorResource = primaryTextColor,
+//            highlight = BrowserMenuHighlight.LowPriority(
+//                notificationTint = getColor(context, R.color.fx_mobile_icon_color_information)
+//            ),
+//            isHighlighted = { WhatsNew.shouldHighlightWhatsNew(context) }
+//        ) {
+//            onItemTapped.invoke(Item.WhatsNew)
+//        }
+//
+//        val helpItem = BrowserMenuImageText(
+//            context.getString(R.string.browser_menu_help),
+//            R.drawable.mozac_ic_help,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.Help)
+//        }
+//
+//        val customizeHomeItem = BrowserMenuImageText(
+//            context.getString(R.string.browser_menu_customize_home),
+//            R.drawable.ic_customize,
+//            primaryTextColor
+//        ) {
+//            onItemTapped.invoke(Item.CustomizeHome)
+//        }
+//
+//        // Use nimbus to set the icon and title.
         val variables = experiments.getVariables(FeatureId.NIMBUS_VALIDATION)
         val settingsItem = BrowserMenuImageText(
             variables.getText("settings-title") ?: context.getString(R.string.browser_menu_settings),
@@ -185,31 +185,31 @@ class HomeMenu(
         ) {
             onItemTapped.invoke(Item.Settings)
         }
-
-        // Only query account manager if it has been initialized.
-        // We don't want to cause its initialization just for this check.
-        val accountAuthItem =
-            if (context.components.backgroundServices.accountManagerAvailableQueue.isReady() &&
-                context.components.backgroundServices.accountManager.accountNeedsReauth()
-            ) {
-                reconnectToSyncItem
-            } else {
-                null
-            }
+//
+//        // Only query account manager if it has been initialized.
+//        // We don't want to cause its initialization just for this check.
+//        val accountAuthItem =
+//            if (context.components.backgroundServices.accountManagerAvailableQueue.isReady() &&
+//                context.components.backgroundServices.accountManager.accountNeedsReauth()
+//            ) {
+//                reconnectToSyncItem
+//            } else {
+//                null
+//            }
 
         val menuItems = listOfNotNull(
-            bookmarksItem,
-            historyItem,
-            downloadsItem,
-            extensionsItem,
-            syncSignInMenuItem,
-            accountAuthItem,
-            BrowserMenuDivider(),
-            desktopItem,
-            BrowserMenuDivider(),
-            whatsNewItem,
-            helpItem,
-            if (FeatureFlags.customizeHome) customizeHomeItem else null,
+//            bookmarksItem,
+//            historyItem,
+//            downloadsItem,
+//            extensionsItem,
+//            syncSignInMenuItem,
+//            accountAuthItem,
+//            BrowserMenuDivider(),
+//            desktopItem,
+//            BrowserMenuDivider(),
+//            whatsNewItem,
+//            helpItem,
+//            if (FeatureFlags.customizeHome) customizeHomeItem else null,
             settingsItem,
             if (settings.shouldDeleteBrowsingDataOnQuit) quitItem else null
         ).also { items ->
